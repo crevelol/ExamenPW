@@ -1,22 +1,21 @@
 const csv = require('csv-parser');
-const csv2 = require('csv-parse');
 const fs = require('fs');
+const datos = require('../resultados/datos');
 
-const res = [];
+let vec = [];
 
-const bus = () => {
+const bus = (ani, pai) => {
+
+    const res = [];
     fs.createReadStream('datos.csv')
         .pipe(csv({ skipLines: 4 }))
-
-    .on('data', (row) => {
+        .on('data', (row) => {
             res.push(row)
         })
         .on('end', () => {
 
-            console.log('CSV file successfully processed');
+            datos.reco(res, ani, pai)
         });
-    console.log(res.filter('ECU'));
-    return res;
 }
 
 module.exports = {
