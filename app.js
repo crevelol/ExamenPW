@@ -12,9 +12,7 @@ switch (comando) {
         buscar.bus(comando2, comando3);
         break;
     case 'guardar':
-        console.log('Guardar del case');
-        console.log(da.name)
-
+        buscar.gua(comando2, comando3);
         break;
     default:
         console.log('Comando no reconocido');

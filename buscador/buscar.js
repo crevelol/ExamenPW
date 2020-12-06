@@ -14,10 +14,24 @@ const bus = (ani, pai) => {
         })
         .on('end', () => {
 
-            datos.reco(res, ani, pai)
+            datos.reco(res, ani, pai);
+        });
+}
+
+const gua = (ani, pai) => {
+    const res = [];
+    fs.createReadStream('datos.csv')
+        .pipe(csv({ skipLines: 4 }))
+        .on('data', (row) => {
+            res.push(row)
+        })
+        .on('end', () => {
+
+            datos.guar(res, ani, pai);
         });
 }
 
 module.exports = {
-    bus
+    bus,
+    gua
 }
